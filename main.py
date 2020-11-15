@@ -13,10 +13,10 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    textChannel = bot.get_channel(525697390024589325)
+    textChannel = bot.get_channel("Enter your text channel id without quotes")
     if message.content.startswith("https://forms"):
         webbrowser.open(message.content)
         await textChannel.send("Mila Link")
         
 
-bot.run('Nzc3MTcwNTEzMDYzNzA2NjY1.X6_icQ.7A0LTHHHEo5ImvPRu-II6a-UJKs')
+bot.run('Enter your Token here')
