@@ -19,13 +19,19 @@ ref = db.reference('/Enrolled/')
 
 refM = db.reference('/Main/')
 
+
 def enroll():
     for x in ref.get().values():
         for i in x.values():
             name.append(i)
 enroll()
 
-offline = name
+offline = []
+def listCopy():
+    global offline
+    offline = name.copy()
+listCopy()
+
 def getStat():
     for eachValue in refS.get():
         status.append(eachValue)
@@ -55,6 +61,7 @@ async def on_message(message):
 
     if message.content.startswith("!enroll"):
         enroll()
+        listCopy()
         await textChannel.send("New pupils enrolled successfully !")
     
     if message.content.startswith("https://forms"):
@@ -79,6 +86,7 @@ async def on_message(message):
         
         
     if message.content.startswith("!status"):
+        listCopy()
         newStatus =  refS.get()
         for eachVal in newStatus:    
             # nameN = eachVal,":",newStatus[eachVal]
